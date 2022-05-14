@@ -18,7 +18,7 @@ class _LoginViewState extends State<LoginView> with TickerProviderStateMixin {
   double _iconSize = 0;
   static const colorizeColors = [
     Color(0xff68C9EC),
-    Color(0xff00ACC1),
+    Color(0xff03045e),
     Color(0xffAEE8DE),
     Color(0xff99D7FF),
     Color(0xff7BD7D5),
@@ -77,7 +77,7 @@ class _LoginViewState extends State<LoginView> with TickerProviderStateMixin {
                     repeatForever: true,
                     animatedTexts: [
                       ColorizeAnimatedText(
-                        'DİNÇER LOJİSTİK',
+                        'DEPON',
                         colors: colorizeColors,
                         textStyle: GoogleFonts.aldrich(
                           textStyle: Theme.of(context).textTheme.headline4,

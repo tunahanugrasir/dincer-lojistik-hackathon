@@ -15,7 +15,7 @@ class _ProfileScreenViewState extends State<ProfileScreenView> {
       child: Container(
         decoration: BoxDecoration(color: const Color(0xff03045e), borderRadius: BorderRadius.circular(20)),
         child: ListView(
-          padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 15),
+          padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 50),
           children: [
             Column(
               children: [

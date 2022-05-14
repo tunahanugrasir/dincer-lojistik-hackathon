@@ -14,31 +14,23 @@ class _SmartBoxViewState extends State<SmartBoxView> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        automaticallyImplyLeading: false,
         centerTitle: true,
-        title: const Text('Akıllı Depolar Nedir ?'),
+        title: const Text('DEPON NEDİR ?'),
         backgroundColor: const Color(0xff03045e),
         shape: const RoundedRectangleBorder(
           borderRadius: BorderRadius.only(bottomLeft: Radius.circular(20), bottomRight: Radius.circular(20)),
         ),
       ),
-      floatingActionButton: Padding(
-        padding: const EdgeInsets.only(bottom: 50.0),
-        child: FloatingActionButton(
-            onPressed: () {},
-            child: const Icon(
-              Icons.real_estate_agent_outlined,
-            )),
-      ),
-      floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
       body: ListView(
         padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 10),
         children: const [
           ExpandedImage(image: 'assets/lottie_images/depo2.jpg'),
-          ExpandedDescription(),
+          ExpandedDescription(data: MyStrings.data1),
           ExpandedImage(image: 'assets/lottie_images/depo3.jpg'),
-          ExpandedDescription(),
+          ExpandedDescription(data: MyStrings.data2),
           ExpandedImage(image: 'assets/lottie_images/depo1.webp'),
-          ExpandedDescription(),
+          ExpandedDescription(data: MyStrings.data3),
           SizedBox(height: 100)
         ],
       ),
@@ -49,8 +41,9 @@ class _SmartBoxViewState extends State<SmartBoxView> {
 class ExpandedDescription extends StatelessWidget {
   const ExpandedDescription({
     Key? key,
+    required this.data,
   }) : super(key: key);
-
+  final String data;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -58,14 +51,16 @@ class ExpandedDescription extends StatelessWidget {
       child: Card(
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
         child: Container(
-            height: context.height / 5,
+            height: context.height / 4,
             decoration: BoxDecoration(color: const Color(0xff023e8a), borderRadius: BorderRadius.circular(20)),
             child: Padding(
               padding: const EdgeInsets.symmetric(vertical: 15.0, horizontal: 10),
-              child: Text(
-                MyStrings.data,
-                textAlign: TextAlign.center,
-                style: GoogleFonts.roboto(color: Colors.white, fontSize: 17),
+              child: Center(
+                child: Text(
+                  data,
+                  textAlign: TextAlign.center,
+                  style: GoogleFonts.roboto(color: Colors.white, fontSize: 17, fontWeight: FontWeight.bold),
+                ),
               ),
             )),
       ),
@@ -100,6 +95,10 @@ class ExpandedImage extends StatelessWidget {
 }
 
 class MyStrings {
-  static const String data =
-      'Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia molestiae quas vel sint commodi repudiandae consequuntur voluptatum laborum blanditiis harum quisquam eius sed odit fugiat iusto fuga praesentium';
+  static const data1 =
+      'DEPON kısaca anlaştığımız bütün perakende firmalarının dağıtım ve iade süreçlerinin tek bir çatı altında toplanmasıdır. Sipariş ettiğiniz ürünleri alabileceğiniz aynı zamanda hiç zorlanmadan ve herhangi bir bekleme olmadan anında ürünlerinizi iade edebileceğiniz bir hizmet sunuyoruz.';
+  static const data2 =
+      'Dünya genelinde artan çevrimiçi satışların yanında iadeler de aynı oranda artmış durumda. Bu durumun beraberinde getirdiği beş 5 milyar ton çöp sahası atığı ve 3 milyon araba ile aynı miktarda CO2 emisyonu üretmesi çevresel sorunlardan bazılarıdır. ';
+  static const data3 =
+      'Müşteri ve satıcılar arasındaki en büyük sorunlardan biri ise stok sorunudur. DEPON sayesinde iade edilen ürün çok hızlı bir şekilde yeniden raflara veya doğrudan sıradaki mutlu müşteriye teslim edilir.';
 }

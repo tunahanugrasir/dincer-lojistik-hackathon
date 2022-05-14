@@ -1,4 +1,4 @@
-import 'package:deneme/views/home_screen.dart';
+import 'package:deneme/views/login_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -17,12 +17,13 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(
+      theme: ThemeData().copyWith(
           primaryColor: const Color(0xff03045e),
           floatingActionButtonTheme: const FloatingActionButtonThemeData(backgroundColor: Color(0xff03045e)),
-          bottomAppBarColor: const Color(0xff03045e)),
+          bottomAppBarColor: const Color(0xff03045e),
+          focusColor: const Color(0xff03045e)),
       title: _appTitle,
-      home: const HomeScreen(),
+      home: const LoginView(),
     );
   }
 }
