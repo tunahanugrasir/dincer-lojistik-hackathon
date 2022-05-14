@@ -1,6 +1,8 @@
+import 'package:deneme/views/profile_screen.dart';
 import 'package:flutter/material.dart';
 
 import '../../views/home_screen_base_view.dart';
+import '../../views/smartbox_view.dart';
 
 class MyTabBarViews extends StatelessWidget {
   const MyTabBarViews({
@@ -15,9 +17,9 @@ class MyTabBarViews extends StatelessWidget {
   Widget build(BuildContext context) {
     return TabBarView(controller: _tabController, children: [
       const HomeScreenBaseView(),
-      Container(color: Colors.lightGreen),
+      const SmartBoxView(),
       Container(color: Colors.greenAccent),
-      Container(color: Colors.black54),
+      const ProfileScreenView()
     ]);
   }
 }

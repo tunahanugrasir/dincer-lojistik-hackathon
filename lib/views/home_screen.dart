@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:lottie/lottie.dart';
 
 import '../core/components/bottom_navigation_bar.dart';
 
@@ -10,6 +12,7 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
   late TabController _tabController;
+  bool _isSure = false;
   @override
   void initState() {
     _tabController = TabController(length: 4, vsync: this);
@@ -70,7 +73,69 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
         ],
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () {},
+        onPressed: () {
+          setState(() {
+            showDialog(
+                builder: (context) {
+                  return StatefulBuilder(
+                    builder: (context, setState) {
+                      return AlertDialog(
+                        title: _isSure
+                            ? AnimatedOpacity(
+                                duration: const Duration(seconds: 2),
+                                opacity: 1,
+                                child: Padding(
+                                  padding: const EdgeInsets.symmetric(horizontal: 4),
+                                  child: Column(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    crossAxisAlignment: CrossAxisAlignment.center,
+                                    children: [
+                                      Text('Kargonuz size en yakın depoya yönlendiriliyor..',
+                                          textAlign: TextAlign.center,
+                                          style: GoogleFonts.roboto(fontSize: 19, fontWeight: FontWeight.bold)),
+                                      Padding(
+                                        padding: const EdgeInsets.only(top: 8.0),
+                                        child: LottieBuilder.asset('assets/lottie_images/to_home_order.json'),
+                                      )
+                                    ],
+                                  ),
+                                ),
+                              )
+                            : Text('Kargonuzu akıllı depolardan daha sonra almak istediğinize emin misiniz?',
+                                textAlign: TextAlign.center,
+                                style: GoogleFonts.roboto(fontSize: 19, fontWeight: FontWeight.bold)),
+                        actions: [
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.end,
+                            children: [
+                              ElevatedButton(
+                                onPressed: () {
+                                  setState(() {
+                                    _isSure = true;
+                                  });
+                                },
+                                style: ButtonStyle(
+                                  backgroundColor: MaterialStateProperty.all(const Color(0xff03045e)),
+                                ),
+                                child: const Text('Evet'),
+                              ),
+                              TextButton(
+                                onPressed: () {
+                                  Navigator.pop(context);
+                                  _isSure = false;
+                                },
+                                child: const Text('Vazgeç', style: TextStyle(color: Color(0xff03045e))),
+                              )
+                            ],
+                          )
+                        ],
+                      );
+                    },
+                  );
+                },
+                context: context);
+          });
+        },
         child: const Icon(Icons.departure_board_outlined),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,

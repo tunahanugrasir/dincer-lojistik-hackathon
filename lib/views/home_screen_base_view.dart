@@ -79,7 +79,7 @@ class _HomeScreenBaseViewState extends State<HomeScreenBaseView> with TickerProv
               const Color(0xff023e8a),
             ),
           ),
-          child: const Text('Kod okundu'),
+          child: _isChecked ? const Text('Kod okundu') : const Text('Kodunuzu okutun'),
         ),
         SizedBox(
           height: context.mediumValue,
@@ -114,6 +114,9 @@ class _HomeScreenBaseViewState extends State<HomeScreenBaseView> with TickerProv
           title: 'Birazcık da Biz',
           description: 'Hakkımızda merak ettiğiniz her şey burada',
         ),
+        SizedBox(
+          height: context.height / 9,
+        )
       ],
     );
   }
